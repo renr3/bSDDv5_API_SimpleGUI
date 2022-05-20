@@ -11,6 +11,7 @@ import argparse
 import collections
 import json
 import sys
+import pathlib
 
 # External
 from PyQt5 import QtCore
@@ -66,29 +67,36 @@ class JsonView(QtWidgets.QWidget):
         self.tree_widget = QtWidgets.QTreeWidget()
         self.tree_widget.setAnimated(True)
 
+        current_directory = str(pathlib.Path(__file__).parent.absolute())
+        pathVline = current_directory.replace("\\", "/") + r'/icon/vline.png'
+        pathbranchmore = current_directory.replace("\\", "/") + r'/icon/branch-more.png'
+        pathbranchend = current_directory.replace("\\", "/") + r'/icon/branch-end.png'
+        pathbranchclosed = current_directory.replace("\\", "/") + r'/icon/branch-closed.png'
+        pathbranchopen = current_directory.replace("\\", "/") + r'/icon/branch-open.png'
+
         self.tree_widget.setStyleSheet("""
         QTreeView::branch:has-siblings:!adjoins-item {
-            border-image: url(D:/Documentos/OneDrive/Renan/Engenharia Civil/UMinho/01-REV@CONSTRUCTION/bSDD_API/Python/qtPracticing/json-viewer-master/vline.png) 0;
+            border-image: url("""+pathVline+""") 0;
         }
 
         QTreeView::branch:has-siblings:adjoins-item {
-            border-image: url(D:/Documentos/OneDrive/Renan/Engenharia Civil/UMinho/01-REV@CONSTRUCTION/bSDD_API/Python/qtPracticing/json-viewer-master/branch-more.png) 0;
+            border-image: url("""+pathbranchmore+""") 0;
         }
 
         QTreeView::branch:!has-children:!has-siblings:adjoins-item {
-            border-image: url(D:/Documentos/OneDrive/Renan/Engenharia Civil/UMinho/01-REV@CONSTRUCTION/bSDD_API/Python/qtPracticing/json-viewer-master/branch-end.png) 0;
+            border-image: url("""+pathbranchend+""") 0;
         }
 
         QTreeView::branch:has-children:!has-siblings:closed,
         QTreeView::branch:closed:has-children:has-siblings {
                 border-image: none;
-                image: url(D:/Documentos/OneDrive/Renan/Engenharia Civil/UMinho/01-REV@CONSTRUCTION/bSDD_API/Python/qtPracticing/json-viewer-master/branch-closed.png);
+                image: url("""+pathbranchclosed+""");
         }
 
         QTreeView::branch:open:has-children:!has-siblings,
         QTreeView::branch:open:has-children:has-siblings  {
                 border-image: none;
-                image: url(D:/Documentos/OneDrive/Renan/Engenharia Civil/UMinho/01-REV@CONSTRUCTION/bSDD_API/Python/qtPracticing/json-viewer-master/branch-open.png);
+                image: url("""+pathbranchopen+""");
         }
         """)
         self.tree_widget.setHeaderLabels(["Key", "Value"])
