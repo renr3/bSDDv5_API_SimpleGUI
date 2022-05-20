@@ -68,11 +68,11 @@ class JsonView(QtWidgets.QWidget):
         self.tree_widget.setAnimated(True)
 
         current_directory = str(pathlib.Path(__file__).parent.absolute())
-        pathVline = current_directory.replace("\\", "/") + r'/icon/vline.png'
-        pathbranchmore = current_directory.replace("\\", "/") + r'/icon/branch-more.png'
-        pathbranchend = current_directory.replace("\\", "/") + r'/icon/branch-end.png'
-        pathbranchclosed = current_directory.replace("\\", "/") + r'/icon/branch-closed.png'
-        pathbranchopen = current_directory.replace("\\", "/") + r'/icon/branch-open.png'
+        pathVline = current_directory.replace("\\", "/") + '/icon/vline.png'
+        pathbranchmore = current_directory.replace("\\", "/") + '/icon/branch-more.png'
+        pathbranchend = current_directory.replace("\\", "/") + '/icon/branch-end.png'
+        pathbranchclosed = current_directory.replace("\\", "/") + '/icon/branch-closed.png'
+        pathbranchopen = current_directory.replace("\\", "/") + '/icon/branch-open.png'
 
         self.tree_widget.setStyleSheet("""
         QTreeView::branch:has-siblings:!adjoins-item {
