@@ -507,7 +507,8 @@ class TPostman():
         #TODO: Implement a way to save this information in a CSV file
         #Save domain list to a csv file
         #self.Save_Domains_To_CSV()
-
+        saveFile = open("C:/Users/renan.000/Desktop/save.json", "w")
+        saveFile = json.dump(Response, saveFile, indent = 1)
       #Return number of results, i.e., number of Reference Documents available in bSDD
       return NbRes  
 
